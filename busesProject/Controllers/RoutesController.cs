@@ -16,10 +16,7 @@ namespace busesProject.Controllers
         [HttpGet]
         public ActionResult<List<route>> Get()
         {
-            List<route> e = routeList.Get();
-            if (e == null)
-                return NotFound();
-            return Ok(e);
+            return routeList.GetRoute();
         }
 
         // GET api/<EmployeeController>/5
@@ -27,10 +24,10 @@ namespace busesProject.Controllers
         public ActionResult<route> GetById(int id)
         {
 
-            route e = routeList.getById(id);
+            route e = routeList.getByIdRoute(id);
             if (e == null)
                 return NotFound();
-            return Ok(e);
+            return e;
 
         }
 
@@ -38,30 +35,30 @@ namespace busesProject.Controllers
         [HttpPost]
         public ActionResult<bool> Post([FromBody] route route)
         {
-            bool b = routeList.post(route);
+            bool b = routeList.Add(route);
             if (b == false)
                 return NotFound(false);
-            return Ok(b);
+            return b;
         }
 
         // PUT api/<EmployeeController>/5
         [HttpPut("{id}")]
         public ActionResult<bool> Put(int id, [FromBody] route r)
         {
-            bool b = routeList.put(id, r);
+            bool b = routeList.Update(id, r);
             if (b == false)
                 return NotFound(false);
-            return Ok(b);
+            return b;
         }
 
         // DELETE api/<EmployeeController>/5
         [HttpDelete("{id}")]
         public ActionResult<bool> Delete(int id)
         {
-            bool b = routeList.delete(id);
+            bool b = routeList.DeleteRoute(id);
             if (b == false)
                 return NotFound(false);
-            return Ok(b);
+            return b;
         }
         [HttpGet("getByStation/{station}")]
         public ActionResult<List<route>> GetByStation(int  station)
@@ -69,7 +66,7 @@ namespace busesProject.Controllers
             List<route> b = routeList.GetByStation(station);
             if (b == null)
                 return NotFound(false);
-            return Ok(b);
+            return b;
 
         }
         [HttpGet("getByBusLine/{busLine}")]
@@ -78,7 +75,7 @@ namespace busesProject.Controllers
             List<route> b = routeList.GetByBusLine(busLine);
             if (b == null)
                 return NotFound(false);
-            return Ok(b);
+            return b;
 
         }
     }

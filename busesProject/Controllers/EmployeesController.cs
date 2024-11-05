@@ -16,10 +16,9 @@ namespace busesProject.Controllers
         [HttpGet]
         public ActionResult<List<employee>> Get()
         {
-            List<employee> e= employees.GetEmployees();
-            if(e == null)   
-                return NotFound();
-            return Ok(e);
+           return employees.GetEmployees();
+           
+             
         }
 
         // GET api/<EmployeeController>/5
@@ -27,10 +26,10 @@ namespace busesProject.Controllers
         public ActionResult<employee> Get(int id)
         {
 
-           employee e = employees.getById(id);
+           employee e = employees.getByIdEmployees(id);
             if (e == null)
                 return NotFound();
-            return Ok(e);
+            return e;
              
         }
 
@@ -38,30 +37,30 @@ namespace busesProject.Controllers
         [HttpPost]
         public ActionResult<bool> Post([FromBody] employee employee)
         {
-            bool b = employees.post(employee);
+            bool b = employees.Add(employee);
             if (b == false)
-                return NotFound(false);
-            return Ok(b);
+                return BadRequest();
+            return b;
         }
 
         // PUT api/<EmployeeController>/5
         [HttpPut("{id}")]
         public ActionResult<bool> Put(int id, [FromBody] employee employee)
         {
-            bool b = employees.put(id, employee);
+            bool b = employees.Update(id, employee);
             if (b == false)
                 return NotFound(false);
-            return Ok(b);
+            return b;
         }
 
         // DELETE api/<EmployeeController>/5
         [HttpDelete("{id}")]
         public ActionResult<bool> Delete(int id)
         {
-            bool b = employees.delete(id);
+            bool b = employees.DeleteEmployees(id);
             if (b == false)
                 return NotFound(false);
-            return Ok(b);
+            return b;
         }
         [HttpGet("{typeWork}")]
         public ActionResult<List<employee>> GetByDestination(workingType typeWork)
@@ -69,8 +68,7 @@ namespace busesProject.Controllers
             List<employee> b =employees.GetByTypeWork(typeWork); 
             if (b == null)
                 return NotFound(false);
-            return Ok(b);
-             
+            return b;            
         }
     }
 }

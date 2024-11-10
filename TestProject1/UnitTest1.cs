@@ -10,10 +10,10 @@ namespace TestProject1
         [Fact]
         public void Test1()
         {
-            int id = 1;
+            int id = -1;
             EmployeesController employee = new EmployeesController();
             var resualt = employee.Get(id);
-            Assert.IsType<NotFoundResult>(resualt);
+            Assert.IsType<BadRequestResult>(resualt.Result);
         }
         [Fact]
         public void Test2()
@@ -22,6 +22,7 @@ namespace TestProject1
             EmployeesController employee = new EmployeesController();
             employee e = new employee();
             e.Tz = TZ;
+            e.PhoneNumber = "12345";
             var resualt = employee.Post(e);
             Assert.IsType<BadRequestResult>(resualt);
         }
@@ -31,8 +32,8 @@ namespace TestProject1
             int id = 1;
             EmployeesController employee = new EmployeesController();
             employee e = new employee();
-            var resualt = employee.Put(id,e);
-            Assert.IsType<NotFoundResult>(resualt);
+            var resualt = employee.Put(id, e);
+            Assert.IsType<NotFoundObjectResult>(resualt);
         }
         [Fact]
         public void Test4()
@@ -40,7 +41,7 @@ namespace TestProject1
             int id = 1;
             EmployeesController employee = new EmployeesController();
             var resualt = employee.Delete(id);
-            Assert.IsType<NotFoundResult>(resualt);
+            Assert.IsType<NotFoundObjectResult>(resualt);
         }
     }
 }

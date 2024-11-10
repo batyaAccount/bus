@@ -11,6 +11,7 @@ namespace busesProject.Controllers
     [ApiController]
     public class BusesController : ControllerBase
     {
+     
         public BusesList buses { get; set; } = new BusesList();
         // GET: api/<BusesController>
         [HttpGet]
@@ -22,7 +23,10 @@ namespace busesProject.Controllers
         // GET api/<BusesController>/5
         [HttpGet("byId/{id}")]
         public ActionResult<bus> Get(int id)
+
         {
+            if (id < 0)
+                return BadRequest();
             bus b = buses.getByIdBuses(id);
             if (b == null)
                 return NotFound();
@@ -32,32 +36,32 @@ namespace busesProject.Controllers
 
         // POST api/<BusesController>
         [HttpPost]
-        public ActionResult<bool> Post([FromBody] bus bus)
+        public ActionResult Post([FromBody] bus bus)
         {
             bool b = buses.Add(bus);
             if (b == false)
                 return NotFound(false);
-            return b;
+            return Ok(b);
         }
 
         // PUT api/<BusesController>/5
         [HttpPut("{id}")]
-        public ActionResult<bool> Put(int id, [FromBody] bus bus)
+        public ActionResult Put(int id, [FromBody] bus bus)
         {
             bool b = buses.Update(id, bus);
             if (b == false)
                 return NotFound(false);
-            return b;
+            return Ok(b);
         }
 
         // DELETE api/<BusesController>/5
         [HttpDelete("{id}")]
-        public ActionResult<bool> Delete(int id)
+        public ActionResult Delete(int id)
         {
             bool b = buses.DeleteBus(id);
             if (b == false)
                 return NotFound(false);
-            return b;
+            return Ok(b);
         }
         [HttpGet("{destination}")]
         public ActionResult<List<bus>> GetByDestination(string destination)

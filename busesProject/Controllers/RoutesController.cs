@@ -23,7 +23,8 @@ namespace busesProject.Controllers
         [HttpGet("getById/{id}")]
         public ActionResult<route> GetById(int id)
         {
-
+            if (id < 0)
+                return BadRequest();
             route e = routeList.getByIdRoute(id);
             if (e == null)
                 return NotFound();
@@ -33,32 +34,32 @@ namespace busesProject.Controllers
 
         // POST api/<EmployeeController>
         [HttpPost]
-        public ActionResult<bool> Post([FromBody] route route)
+        public ActionResult Post([FromBody] route route)
         {
             bool b = routeList.Add(route);
             if (b == false)
                 return NotFound(false);
-            return b;
+            return Ok(b);
         }
 
         // PUT api/<EmployeeController>/5
         [HttpPut("{id}")]
-        public ActionResult<bool> Put(int id, [FromBody] route r)
+        public ActionResult Put(int id, [FromBody] route r)
         {
             bool b = routeList.Update(id, r);
             if (b == false)
                 return NotFound(false);
-            return b;
+            return Ok(b);
         }
 
         // DELETE api/<EmployeeController>/5
         [HttpDelete("{id}")]
-        public ActionResult<bool> Delete(int id)
+        public ActionResult Delete(int id)
         {
             bool b = routeList.DeleteRoute(id);
             if (b == false)
                 return NotFound(false);
-            return b;
+            return Ok(b);
         }
         [HttpGet("getByStation/{station}")]
         public ActionResult<List<route>> GetByStation(int  station)

@@ -24,6 +24,8 @@ namespace busesProject.Controllers
         [HttpGet("byId/{id}")]
         public ActionResult<PublicInquiries> Get(int id)
         {
+            if (id < 0)
+                return BadRequest();
             PublicInquiries b = publicInquiries.getByIdInq(id);
             if (b == null)
                 return NotFound();
@@ -33,40 +35,40 @@ namespace busesProject.Controllers
 
         // POST api/<BusesController>
         [HttpPost]
-        public ActionResult<bool> Post([FromBody] PublicInquiries bus)
+        public ActionResult Post([FromBody] PublicInquiries bus)
         {
             bool b = publicInquiries.Add(bus);
             if (b == false)
                 return BadRequest();
-            return b;
+            return Ok(b);
         }
 
         // PUT api/<BusesController>/5
         [HttpPut("{id}")]
-        public ActionResult<bool> Put(int id, [FromBody] PublicInquiries publicInquiry)
+        public ActionResult Put(int id, [FromBody] PublicInquiries publicInquiry)
         {
             bool b = publicInquiries.Update(id, publicInquiry);
             if (b == false)
                 return NotFound(false);
-            return b;
+            return Ok(b);
         }
 
         // DELETE api/<BusesController>/5
         [HttpDelete("{id}")]
-        public ActionResult<bool> Delete(int id)
+        public ActionResult Delete(int id)
         {
             bool b = publicInquiries.DeleteInq(id);
             if (b == false)
                 return NotFound(false);
-            return b;
+            return Ok(b);
         }
         [HttpDelete("daleteByDate/{date}")]
-        public ActionResult<bool> deleteByDate(DateTime date)
+        public ActionResult deleteByDate(DateTime date)
         {
             bool b = publicInquiries.DeleteByDate(date);
             if (b == false)
                 return NotFound(false);
-            return b;
+            return Ok(b);
         }
     }
 }

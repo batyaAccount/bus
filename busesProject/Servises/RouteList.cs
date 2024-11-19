@@ -12,8 +12,7 @@ namespace busesProject.Lists
         }
         public bool Add(route route)
         {
-            if (getByIdRoute(route.Id) != null)
-                DataContextManager.DataContext.Routes = new List<route>();
+            
             DataContextManager.DataContext.Routes.Add(route);
             if (getByIdRoute(route.Id).Equals(route))
             { return true; }

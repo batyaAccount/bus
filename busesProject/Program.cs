@@ -1,6 +1,12 @@
+using busesProject;
+using busesProject.Lists;
+using busesProject.pages;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<EmployeeList>();
+builder.Services.AddScoped<IEmployeeDataContext, EmployeeDataContext>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -17,6 +23,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseCors("MyPolicy");
+
+app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

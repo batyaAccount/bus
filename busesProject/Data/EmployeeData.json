@@ -1,0 +1,57 @@
+[
+  {
+    "Id": 1,
+    "Name": "John Doe",
+    "Tz": "123456789",
+    "Address": "123 Main Street",
+    "PhoneNumber": "555-1234",
+    "WorkType": "driver",
+    "AmountOfHours": 40,
+    "Salary": 5000,
+    "StartDate": "2022-01-01"
+  },
+  {
+    "Id": 2,
+    "Name": "Jane Smith",
+    "Tz": "987654321",
+    "Address": "456 Elm Street",
+    "PhoneNumber": "555-5678",
+    "WorkType": "officeEmployee",
+    "AmountOfHours": 35,
+    "Salary": 6000,
+    "StartDate": "2022-02-15"
+  },
+  {
+    "Id": 3,
+    "Name": "Michael Johnson",
+    "Tz": "456123789",
+    "Address": "789 Oak Avenue",
+    "PhoneNumber": "555-9012",
+    "WorkType": "cleaner",
+    "AmountOfHours": 25,
+    "Salary": 4000,
+    "StartDate": "2022-03-10"
+  },
+  {
+    "Id": 4,
+    "Name": "Sarah Williams",
+    "Tz": "789456123",
+    "Address": "321 Pine Road",
+    "PhoneNumber": "555-3456",
+    "WorkType": "driver",
+    "AmountOfHours": 45,
+    "Salary": 5500,
+    "StartDate": "2022-04-20"
+  },
+  {
+    "Id": 5,
+    "Name": "Chris Anderson",
+    "Tz": "654321987",
+    "Address": "567 Maple Lane",
+    "PhoneNumber": "555-7890",
+    "WorkType": "officeEmployee",
+    "AmountOfHours": 30,
+    "Salary": 7000,
+    "StartDate": "2022-05-05"
+  }
+]

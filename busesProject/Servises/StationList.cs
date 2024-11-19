@@ -12,8 +12,7 @@ namespace busesProject.Lists
         }
         public bool Add(Station station)
         {
-            if (getByIdStation(station.Id) != null)
-                DataContextManager.DataContext.Stations = new List<Station>();
+          
             DataContextManager.DataContext.Stations.Add(station);
             if (getByIdStation(station.Id).Equals(station))
             { return true; }

@@ -12,8 +12,7 @@ namespace busesProject.Lists
         }
         public bool Add(PublicInquiries publicInquiry)
         {
-            if (getByIdInq(publicInquiry.Id) != null)
-                DataContextManager.DataContext.PublicInquiries = new List<PublicInquiries>();
+            
             if (publicInquiry.PhoneNumber.Length != 10)
                 return false;
             DataContextManager.DataContext.PublicInquiries.Add(publicInquiry);

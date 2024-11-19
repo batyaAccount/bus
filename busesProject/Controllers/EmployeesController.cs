@@ -10,7 +10,11 @@ namespace busesProject.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        public EmployeeList employees { get; set; } = new EmployeeList();
+        readonly EmployeeList employees;
+        public EmployeesController(EmployeeList emp)
+        {
+            employees = emp;
+        }
 
         // GET: api/<EmployeeController>
         [HttpGet]
@@ -64,7 +68,7 @@ namespace busesProject.Controllers
             return Ok(true);
         }
         [HttpGet("{typeWork}")]
-        public ActionResult<List<employee>> GetByDestination(workingType typeWork)
+        public ActionResult<List<employee>> GetByDestination(string typeWork)
         {
             List<employee> b = employees.GetByTypeWork(typeWork);
             if (b == null)
